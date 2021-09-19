@@ -36,7 +36,8 @@ CONTENTS                                                       *todo-contents*
 
 1.3 Date:                                                 *todo-commands-date*
 	`<localleader>d`   Set current task's creation date to the current date
-	`date<tab>`        (Insert mode) Insert the current date
+	`<localleader>o`   Insert line below with date
+	`<localleader>O`   Insert line above with date
 
 1.4 Mark as done:                                         *todo-commands-done*
 	`<localleader>x`   Mark current task as done
