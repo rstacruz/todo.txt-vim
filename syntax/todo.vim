@@ -64,4 +64,31 @@ if exists('g:todo_load_python') && g:todo_load_python
     endif
 endif
 
+" Lifted from https://github.com/plasticboy/vim-markdown/blob/master/syntax/markdown.vim
+let s:conceal = ''
+let s:concealends = ''
+if has('conceal')
+  let s:conceal = ' conceal'
+  let s:concealends = ' concealends'
+endif
+
+hi default link TodoInlineURL Underlined
+hi default link TodoURL Underlined
+hi default link TodoDelimiter NonText
+hi default link TodoLink Special
+hi default link mkdLink Special
+
+" Autolink without angle brackets
+syn match  TodoInlineURL /https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z0-9][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?[^] \t]*/
+" Autolink with parenthesis
+syn region TodoInlineURL matchgroup=TodoDelimiter start="(\(https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z0-9][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?[^] \t]*)\)\@=" end=")"
+" Autolink with angle brackets
+syn region TodoInlineURL matchgroup=TodoDelimiter start="\\\@<!<\ze[a-z][a-z0-9,.-]\{1,22}:\/\/[^> ]*>" end=">"
+
+" [link](url)
+execute 'syn region TodoLink matchgroup=TodoDelimiter  start="\\\@<!!\?\[\ze[^]\n]*\n\?[^]\n]*\][[(]" end="\]" contains=@TodoNonListItem,@Spell nextgroup=TodoURL,TodoID skipwhite' . s:concealends
+execute 'syn region TodoID matchgroup=TodoDelimiter    start="\["    end="\]" contained oneline' . s:conceal
+execute 'syn region TodoURL matchgroup=TodoDelimiter   start="("     end=")"  contained oneline' . s:conceal
+execute 'syn region TodoLink matchgroup=TodoDelimiter  start="\\\@<!!\?\[\ze[^]\n]*\n\?[^]\n]*\][[(]" end="\]" contains=@TodoNonListItem,@Spell nextgroup=TodoURL,TodoID skipwhite' . s:concealends
+
 let b:current_syntax = "todo"

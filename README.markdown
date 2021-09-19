@@ -1,3 +1,10 @@
+### @rstacruz's fork
+
+Introduces some new features:
+
+- URL highlighting
+- Conceal of Markdown-style URL's
+
 ### (Apr 2015) Important note: mappings were changed!
 
 As it was suggested on issue [#28](https://github.com/freitass/todo.txt-vim/issues/28) (and as recommended by vim's documentation), all mappings were changed to use `<localleader>` instead of `<leader>`. If you don't have `maplocalleader` set on your environment then yours is probably `\`. For more information on that regard, please take a look at `:h <Localleader>`.
@@ -15,38 +22,38 @@ If your Vim installation does **not** have Python support, this plugin **will wo
     cp -R * ~/.vim
 
 Also make sure your .vimrc contains
-    
+
     syntax on
     filetype plugin on
 
-You can set the `<localleader>` in your .vimrc file with 
-    
+You can set the `<localleader>` in your .vimrc file with
+
     let maplocalleader="<yourKey>"
 
 This plugin gives syntax highlighting to [todo.txt](http://todotxt.com/) files. It also defines a few mappings, to help with editing these files:
 
 Sorting tasks:  
-`<localleader>s`   Sort the file  
-`<localleader>s+`  Sort the file on +Projects  
-`<localleader>s@`  Sort the file on @Contexts  
-`<localleader>sd`  Sort the file on dates  
-`<localleader>sdd`  Sort the file on due dates  
+`<localleader>s` Sort the file  
+`<localleader>s+` Sort the file on +Projects  
+`<localleader>s@` Sort the file on @Contexts  
+`<localleader>sd` Sort the file on dates  
+`<localleader>sdd` Sort the file on due dates
 
 Edit priority:  
-`<localleader>j`   Decrease the priority of the current line  
-`<localleader>k`   Increase the priority of the current line  
-`<localleader>a`   Add the priority (A) to the current line  
-`<localleader>b`   Add the priority (B) to the current line  
-`<localleader>c`   Add the priority (C) to the current line  
+`<localleader>j` Decrease the priority of the current line  
+`<localleader>k` Increase the priority of the current line  
+`<localleader>a` Add the priority (A) to the current line  
+`<localleader>b` Add the priority (B) to the current line  
+`<localleader>c` Add the priority (C) to the current line
 
 Date:  
-`<localleader>d`   Set current task's creation date to the current date  
-`date<tab>`        (Insert mode) Insert the current date  
+`<localleader>d` Set current task's creation date to the current date  
+`date<tab>` (Insert mode) Insert the current date
 
 Mark as done:  
-`<localleader>x`   Mark current task as done  
-`<localleader>X`   Mark all tasks as done  
-`<localleader>D`   Move completed tasks to done.txt  
+`<localleader>x` Mark current task as done  
+`<localleader>X` Mark all tasks as done  
+`<localleader>D` Move completed tasks to done.txt
 
 This plugin detects any text file with the name todo.txt or done.txt with an optional prefix that ends in a period (e.g. second.todo.txt, example.done.txt).
 
