@@ -4,6 +4,8 @@ Introduces some new features:
 
 - URL highlighting
 - Conceal of Markdown-style URL's
+- `localleader-o` to insert line below with date
+- `localleader-O` to insert line above with date
 
 ### (Apr 2015) Important note: mappings were changed!
 
