@@ -16,6 +16,7 @@ CONTENTS                                                       *todo-contents*
 		1.3. Date ..................................... |todo-commands-date|
 		1.4. Mark as done ............................. |todo-commands-done|
 	2. Options ...................................... |todo-options|
+	3. Extras ....................................... |todo-extras|
 
 ==============================================================================
 1. Commands                                                    *todo-commands*
@@ -71,6 +72,11 @@ for compatibility with other todo.txt editors, or as a matter of preference:
   let g:todo_done_filename = 'completed.txt'
 
    Default: Done.txt or done.txt based on todo.txt capitalization.
+
+==============================================================================
+3. Extras                                                        *todo-extras*
+
+*Conceal* - Use `:setlocal conceallevel=2` to hide things like URLs.
 
 ===============================================================================
 vim:ft=help:et:ts=2:sw=2:sts=2:norl

@@ -91,4 +91,16 @@ execute 'syn region TodoID matchgroup=TodoDelimiter    start="\["    end="\]" co
 execute 'syn region TodoURL matchgroup=TodoDelimiter   start="("     end=")"  contained oneline' . s:conceal
 execute 'syn region TodoLink matchgroup=TodoDelimiter  start="\\\@<!!\?\[\ze[^]\n]*\n\?[^]\n]*\][[(]" end="\]" contains=@TodoNonListItem,@Spell nextgroup=TodoURL,TodoID skipwhite' . s:concealends
 
+" Bold/italic
+let s:oneline = ' oneline'
+syn region TodoItalic matchgroup=TodoItalic start="\%(\*\|_\)"    end="\%(\*\|_\)"
+syn region TodoBold matchgroup=TodoBold start="\%(\*\*\|__\)"    end="\%(\*\*\|__\)"
+syn region TodoBoldItalic matchgroup=TodoBoldItalic start="\%(\*\*\*\|___\)"    end="\%(\*\*\*\|___\)"
+execute 'syn region htmlItalic matchgroup=TodoItalic start="\%(^\|\s\)\zs\*\ze[^\\\*\t ]\%(\%([^*]\|\\\*\|\n\)*[^\\\*\t ]\)\?\*\_W" end="[^\\\*\t ]\zs\*\ze\_W" keepend contains=@Spell' . s:oneline . s:concealends
+execute 'syn region htmlItalic matchgroup=TodoItalic start="\%(^\|\s\)\zs_\ze[^\\_\t ]" end="[^\\_\t ]\zs_\ze\_W" keepend contains=@Spell' . s:oneline . s:concealends
+execute 'syn region htmlBold matchgroup=TodoBold start="\%(^\|\s\)\zs\*\*\ze\S" end="\S\zs\*\*" keepend contains=@Spell' . s:oneline . s:concealends
+execute 'syn region htmlBold matchgroup=TodoBold start="\%(^\|\s\)\zs__\ze\S" end="\S\zs__" keepend contains=@Spell' . s:oneline . s:concealends
+execute 'syn region htmlBoldItalic matchgroup=TodoBoldItalic start="\%(^\|\s\)\zs\*\*\*\ze\S" end="\S\zs\*\*\*" keepend contains=@Spell' . s:oneline . s:concealends
+execute 'syn region htmlBoldItalic matchgroup=TodoBoldItalic start="\%(^\|\s\)\zs___\ze\S" end="\S\zs___" keepend contains=@Spell' . s:oneline . s:concealends
+
 let b:current_syntax = "todo"
